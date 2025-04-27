@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Details from "./Details";
+import RangeChart from "./RangeChart";
 
-function App() {
+export default function App() {
+  const [currentPrice, setCurrentPrice] = useState(0);
+  const [activeTab, setActiveTab] = useState("Chart");
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" style={{ width: "839px", margin: "0px auto" }}>
+      <Details
+        currentPrice={currentPrice}
+        setActiveTab={setActiveTab}
+        activeTab={activeTab}
+      />
+      {activeTab === "Chart" && (
+        <RangeChart setCurrentPrice={setCurrentPrice} />
+      )}
     </div>
   );
 }
-
-export default App;
