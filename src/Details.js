@@ -3,7 +3,10 @@ import React from "react";
 const tabs = ["Summary", "Chart", "Statistics", "Analysis", "Settings"];
 
 const Details = ({ currentPrice, setActiveTab, activeTab }) => {
-  console.log("curr", currentPrice);
+  const formattedPrice = new Intl.NumberFormat("en-IN", {
+    style: "decimal",
+    maximumFractionDigits: 2,
+  }).format(currentPrice);
 
   return (
     <div>
@@ -22,7 +25,7 @@ const Details = ({ currentPrice, setActiveTab, activeTab }) => {
               color: "#1A243A",
             }}
           >
-            {currentPrice.toFixed(2)}
+            {formattedPrice}
           </div>
           <sup
             style={{
